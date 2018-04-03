@@ -58,6 +58,7 @@ private:
 	bool m_isplaying;
 	int m_curaudioindex;
 	qint64 m_audiopos;
+	bool m_fakestop;		//因为在switch audio时要stop player，会有一个stop信号发出来，那时候不能处理这个stop信号。
 };
 
 #endif // PLAYERGROUP_H

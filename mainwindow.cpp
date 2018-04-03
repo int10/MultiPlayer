@@ -513,7 +513,7 @@ void MainWindow::Play()
 	connect(m_playergroup, SIGNAL(Signal_Started()), SLOT(updateSlider()));
 	connect(m_playergroup, SIGNAL(Signal_UpdateSliderUnit()), SLOT(updateSliderUnit()));
 	//connect(m_playergroup, SIGNAL(Signal_mediaStateChanged(QMediaPlayer::State)), SLOT(Slot_MediaStateChanged(QMediaPlayer::State)));
-	//connect(m_playergroup, SIGNAL(Signal_StateChanged(QtAV::AVPlayer::State)), SLOT(Slot_StateChanged(QtAV::AVPlayer::State)));
+	connect(m_playergroup, SIGNAL(Signal_StateChanged(QtAV::AVPlayer::State)), SLOT(Slot_StateChanged(QtAV::AVPlayer::State)));
 	m_dstindex = 0;
 	m_curindex = 0;
 	m_fullscreenindex = -1;

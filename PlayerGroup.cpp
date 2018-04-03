@@ -17,6 +17,7 @@ PlayerGroup::PlayerGroup(QStringList audiolist, QStringList videolist, QList<QtA
 	}
 	m_isplaying = false;
 	m_audiopos = 0;
+	m_fakestop = false;
 
 #ifdef USE_QMEDIAPLAYER
 	m_audioplayer = new QMediaPlayer;
@@ -155,6 +156,7 @@ void PlayerGroup::SwitchAudio(int index)
 	}
 #else
 	m_audiopos = m_audioplayer->position();
+	m_fakestop = true;
 	m_audioplayer->stop();
 	m_audioplayer->setFile(m_audiolist.at(index));
 	m_audioplayer->play();
@@ -276,7 +278,15 @@ void PlayerGroup::stateChanged(QtAV::AVPlayer::State state)
 			}
 		}
 	}
-	emit Signal_StateChanged(state);
+	if(QtAV::AVPlayer::StoppedState != state) {
+		emit Signal_StateChanged(state);
+	} else {
+		if(true == m_fakestop) {
+			m_fakestop = false;
+		} else {
+			emit Signal_StateChanged(state);
+		}
+	}
 }
 
 //void PlayerGroup::mediaStateChanged(QMediaPlayer::State state)
