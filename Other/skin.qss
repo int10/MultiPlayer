@@ -1,0 +1,117 @@
+/*--- MainWindow ---*/
+QMainWindow#MainWindow > QWidget#centralwidget{background-color: rgb(64, 64, 64);}
+
+QLabel{font: "微软雅黑"; color: rgb(255, 255, 255); }
+QGroupBox {
+        font-size: 15px;
+        border: 1px solid rgb(80, 80, 80);
+        border-radius: 4px;
+        margin-top: 10px;
+}
+QGroupBox::title {
+        color: rgb(255, 255, 255);
+        top: -5px;
+        left: 10px;
+}
+
+QGroupBox#gbAudio > QPushButton{ border-image: url(images/AudioNormal.png); }
+QGroupBox#gbAudio > QPushButton:disabled{ border-image: url(images/AudioDisabled.png); }
+QGroupBox#gbAudio > QPushButton:checked{ border-image: url(images/AudioChecked.png); }
+QGroupBox#gbAudio > QPushButton:hover{ border-image: url(images/AudioHover.png); }
+QGroupBox#gbAudio > QPushButton:pressed{ border-image: url(images/AudioPressed.png); }
+
+QPushButton#btnPlay{ border-image: url(images/PlayNormal.png); }
+QPushButton#btnPlay:disabled{ border-image: url(images/PlayDisabled.png); }
+QPushButton#btnPlay:hover{ border-image: url(images/PlayHover.png); }
+QPushButton#btnPlay:pressed{ border-image: url(images/PlayPressed.png); }
+
+QPushButton#btnPause{ border-image: url(images/PauseNormal.png); }
+QPushButton#btnPause:disabled{ border-image: url(images/PauseDisabled.png); }
+QPushButton#btnPause:hover{ border-image: url(images/PauseHover.png); }
+QPushButton#btnPause:pressed{ border-image: url(images/PausePressed.png); }
+
+QPushButton#btnStop{ border-image: url(images/StopNormal.png); }
+QPushButton#btnStop:disabled{ border-image: url(images/StopDisabled.png); }
+QPushButton#btnStop:hover{ border-image: url(images/StopHover.png); }
+QPushButton#btnStop:pressed{ border-image: url(images/StopPressed.png); }
+
+QPushButton#btnFb{ border-image: url(images/FbNormal.png); }
+QPushButton#btnFb:disabled{ border-image: url(images/FbDisabled.png); }
+QPushButton#btnFb:hover{ border-image: url(images/FbHover.png); }
+QPushButton#btnFb:pressed{ border-image: url(images/FbPressed.png); }
+
+QPushButton#btnFf{ border-image: url(images/FfNormal.png); }
+QPushButton#btnFf:disabled{ border-image: url(images/FfDisabled.png); }
+QPushButton#btnFf:hover{ border-image: url(images/FfHover.png); }
+QPushButton#btnFf:pressed{ border-image: url(images/FfPressed.png); }
+
+QPushButton#btnPre{ border-image: url(images/PreNormal.png); }
+QPushButton#btnPre:disabled{ border-image: url(images/PreDisabled.png); }
+QPushButton#btnPre:hover{ border-image: url(images/PreHover.png); }
+QPushButton#btnPre:pressed{ border-image: url(images/PrePressed.png); }
+
+QPushButton#btnNext{ border-image: url(images/NextNormal.png); }
+QPushButton#btnNext:disabled{ border-image: url(images/NextDisabled.png); }
+QPushButton#btnNext:hover{ border-image: url(images/NextHover.png); }
+QPushButton#btnNext:pressed{ border-image: url(images/NextPressed.png); }
+
+QLabel#lbVolume {border-image: url(images/Volume.png); }
+QLabel#lbVolume:disabled {border-image: url(images/VolumeDisabled.png); }
+QGridLayout#loVideoList QLabel{font: 15pt "微软雅黑"; color: rgb(255, 255, 255);  }
+
+QMessageBox {background-color: rgb(64, 64, 64); }
+QMessageBox QLabel {font: 15pt "微软雅黑"; color: rgb(255, 255, 255);}
+
+QSlider::add-page:Horizontal{background-color: rgb(116,116,116);height:4px;}  
+QSlider::sub-page:Horizontal{background-color: rgb(0, 160, 234); height:4px;}
+QSlider::sub-page:Horizontal:disabled{background-color: rgb(116,116,116); height:4px;}
+QSlider::groove:Horizontal{background:transparent;height:6px;}
+QSlider::handle:Horizontal{height: 20px;width:10px;border-image: url(images/SliderNormal.png);margin: -8 0px;}
+QSlider::handle:Horizontal:disabled{height: 20px;width:10px;border-image: url(images/SliderDisabled.png);margin: -8 0px;}
+QSlider::handle:Horizontal:hover{height: 20px;width:10px;border-image: url(images/SliderHover.png);margin: -8 0px;}
+QSlider::handle:Horizontal:Pressed{height: 20px;width:10px;border-image: url(images/SliderPressed.png);margin: -8 0px;}
+
+FormControlPanel QPushButton#btnPlay{ border-image: url(images/PlayNormalTrans.png); }
+FormControlPanel QPushButton#btnPlay:disabled{ border-image: url(images/PlayDisabledTrans.png); }
+FormControlPanel QPushButton#btnPlay:hover{ border-image: url(images/PlayHover.png); }
+FormControlPanel QPushButton#btnPlay:pressed{ border-image: url(images/PlayPressed.png); }
+
+FormControlPanel QPushButton#btnPause{ border-image: url(images/PauseNormalTrans.png); }
+FormControlPanel QPushButton#btnPause:disabled{ border-image: url(images/PauseDisabledTrans.png); }
+FormControlPanel QPushButton#btnPause:hover{ border-image: url(images/PauseHover.png); }
+FormControlPanel QPushButton#btnPause:pressed{ border-image: url(images/PausePressed.png); }
+
+FormControlPanel QPushButton#btnStop{ border-image: url(images/StopNormalTrans.png); }
+FormControlPanel QPushButton#btnStop:disabled{ border-image: url(images/StopDisabledTrans.png); }
+FormControlPanel QPushButton#btnStop:hover{ border-image: url(images/StopHover.png); }
+FormControlPanel QPushButton#btnStop:pressed{ border-image: url(images/StopPressed.png); }
+
+FormControlPanel QPushButton#btnFb{ border-image: url(images/FbNormalTrans.png); }
+FormControlPanel QPushButton#btnFb:disabled{ border-image: url(images/FbDisabledTrans.png); }
+FormControlPanel QPushButton#btnFb:hover{ border-image: url(images/FbHover.png); }
+FormControlPanel QPushButton#btnFb:pressed{ border-image: url(images/FbPressed.png); }
+
+FormControlPanel QPushButton#btnFf{ border-image: url(images/FfNormalTrans.png); }
+FormControlPanel QPushButton#btnFf:disabled{ border-image: url(images/FfDisabledTrans.png); }
+FormControlPanel QPushButton#btnFf:hover{ border-image: url(images/FfHover.png); }
+FormControlPanel QPushButton#btnFf:pressed{ border-image: url(images/FfPressed.png); }
+
+FormControlPanel QPushButton#btnPre{ border-image: url(images/PreNormalTrans.png); }
+FormControlPanel QPushButton#btnPre:disabled{ border-image: url(images/PreDisabledTrans.png); }
+FormControlPanel QPushButton#btnPre:hover{ border-image: url(images/PreHover.png); }
+FormControlPanel QPushButton#btnPre:pressed{ border-image: url(images/PrePressed.png); }
+
+FormControlPanel QPushButton#btnNext{ border-image: url(images/NextNormalTrans.png); }
+FormControlPanel QPushButton#btnNext:disabled{ border-image: url(images/NextDisabledTrans.png); }
+FormControlPanel QPushButton#btnNext:hover{ border-image: url(images/NextHover.png); }
+FormControlPanel QPushButton#btnNext:pressed{ border-image: url(images/NextPressed.png); }
+
+FormControlPanel QSlider::add-page:Horizontal{background-color: rgb(116,116,116);height:4px;}  
+FormControlPanel QSlider::sub-page:Horizontal{background-color: rgb(0, 160, 234); height:4px;}
+FormControlPanel QSlider::sub-page:Horizontal:disabled{background-color: rgb(116,116,116); height:4px;}
+FormControlPanel QSlider::groove:Horizontal{background:transparent;height:6px;}
+FormControlPanel QSlider::handle:Horizontal{height: 20px;width:10px;border-image: url(images/SliderNormalTrans.png);margin: -8 0px;}
+FormControlPanel QSlider::handle:Horizontal:disabled{height: 20px;width:10px;border-image: url(images/SliderDisabledTrans.png);margin: -8 0px;}
+FormControlPanel QSlider::handle:Horizontal:hover{height: 20px;width:10px;border-image: url(images/SliderHover.png);margin: -8 0px;}
+FormControlPanel QSlider::handle:Horizontal:Pressed{height: 20px;width:10px;border-image: url(images/SliderPressed.png);margin: -8 0px;}
+
