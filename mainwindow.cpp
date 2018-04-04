@@ -449,6 +449,11 @@ bool MainWindow::PrepareFileList()
 		m_ready = false;
 		return false;
 	}
+	if("" == m_audiolist.at(0)){
+		QMessageBox::information(this, "Error", "找不到现场音频文件！");
+		m_ready = false;
+		return false;
+	}
 
 	//获取视频文件
 	//获取court number
