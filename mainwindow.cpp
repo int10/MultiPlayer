@@ -4,7 +4,7 @@
 #include <QSlider>
 #include <QSettings>
 #include <QMessageBox>
-#define VERSION "1.8"
+#define VERSION "1.9"
 
 using namespace QtAV;
 MainWindow::MainWindow(QWidget *parent) :
