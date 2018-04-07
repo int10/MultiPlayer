@@ -4,7 +4,7 @@
 #include <QSlider>
 #include <QSettings>
 #include <QMessageBox>
-#define VERSION "1.9"
+#define VERSION "2.0"
 
 using namespace QtAV;
 MainWindow::MainWindow(QWidget *parent) :
@@ -286,7 +286,7 @@ void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
 	if(event->button() != Qt::LeftButton) return;
 	if(NULL == m_playergroup) return;
-	if(!m_playergroup->IsPlaying() && -1 == m_fullscreenindex) return;	//pause下不全屏
+//	if(!m_playergroup->IsPlaying() && -1 == m_fullscreenindex) return;	//pause下不全屏
 
 	if(-1 == m_fullscreenindex){
 		int index = 0;

@@ -412,6 +412,9 @@ public:
     MediaEndAction mediaEndAction() const;
     void setMediaEndAction(MediaEndAction value);
 
+	VideoFrame displayedFrame();
+	void deliverVideoFrame(VideoFrame &frame);
+
 public Q_SLOTS:
     /*!
      * \brief load

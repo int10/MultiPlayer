@@ -228,6 +228,9 @@ void PlayerGroup::updateSlider(qint64 value)
 //	qDebug()<<poslist;
 
 	emit Signal_PositionChanged(value);
+	if(pos > m_audioplayer->duration()) {	//有遇到mp3文件播放时间比总时间还长，这里stop掉好了。
+		Stop();
+	}
 }
 
 void PlayerGroup::updateSlider()
@@ -305,6 +308,10 @@ bool PlayerGroup::AddVideoOutput(int index, QtAV::VideoOutput * output)
 	if(!m_playerlist.at(index)) return false;
 	if(!m_playerlist.at(index)->isPlaying()) return false;
 	m_playerlist.at(index)->addVideoRenderer(output);
+	if(false == m_isplaying) {	//pause下更新一下单窗口的video out..
+		QtAV::VideoFrame frame = m_playerlist.at(index)->displayedFrame();
+		m_playerlist.at(index)->deliverVideoFrame(frame);
+	}
 	return true;
 }
 
