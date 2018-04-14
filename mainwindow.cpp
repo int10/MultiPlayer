@@ -3,8 +3,10 @@
 #include <QVBoxLayout>
 #include <QSlider>
 #include <QSettings>
+#include <QToolTip>
 #include <QMessageBox>
-#define VERSION "2.0"
+
+#define VERSION "2.0debug"
 
 using namespace QtAV;
 MainWindow::MainWindow(QWidget *parent) :
@@ -56,6 +58,18 @@ MainWindow::MainWindow(QWidget *parent) :
 		SetStopState();
 		//Play();
 	}
+	//设置mouse trace，激活全屏时鼠标移动事件
+	ui->sliProcess->setMouseTracking(true);
+	ui->frame_3->setMouseTracking(true);
+	ui->frame->setMouseTracking(true);
+	ui->page->setMouseTracking(true);
+	ui->stackedWidget->setMouseTracking(true);
+	ui->centralwidget->setMouseTracking(true);
+	setMouseTracking(true);
+
+
+	connect(ui->sliProcess, SIGNAL(onLeave()), SLOT(onTimeSliderLeave()));
+	connect(ui->sliProcess, SIGNAL(onHover(int,int)), SLOT(onTimeSliderHover(int,int)));
 }
 
 MainWindow::~MainWindow()
@@ -230,18 +244,24 @@ void MainWindow::updateSlider(qint64 value)
 	//m_sliderprocess2->setRange(0, int(m_playergroup->duration()/m_unit));
 	//m_sliderprocess2->setValue(int(value/m_unit));
 
-	int total_sec = m_playergroup->duration()/1000;
-	int min = total_sec/60;
-	int sec = total_sec - min * 60;
 
-	int ptotal_sec = value/1000;
-	int pmin = ptotal_sec/60;
-	int psec = ptotal_sec - pmin * 60;
+	QString total_str = QTime(0, 0, 0).addSecs(m_playergroup->duration()/1000).toString("HH:mm:ss");
+	QString es_str = QTime(0, 0, 0).addSecs(value/1000).toString("HH:mm:ss");
+
+
+//	int total_sec = m_playergroup->duration()/1000;
+//	int min = total_sec/60;
+//	int sec = total_sec - min * 60;
+
+//	int ptotal_sec = value/1000;
+//	int pmin = ptotal_sec/60;
+//	int psec = ptotal_sec - pmin * 60;
 	QString str;
-	str.sprintf("%0d:%02d/%0d:%02d", pmin, psec, min, sec);
+//	str.sprintf("%0d:%02d/%0d:%02d", pmin, psec, min, sec);
+	str = es_str + "/" + total_str;
 	ui->lbProcess->setText(str);
-	QDateTime playtime = m_recordtime.addSecs(ptotal_sec);
-	ui->lbCurTime->setText(playtime.toString("hh:mm:ss"));
+	QDateTime playtime = m_recordtime.addSecs(value/1000);
+	ui->lbCurTime->setText(playtime.toString("HH:mm:ss"));
 	m_controlpanel->UpdateSlider(int(m_playergroup->duration()/m_unit), int(value/m_unit), str);
 }
 
@@ -627,7 +647,7 @@ void MainWindow::SetStopState()
 
 void MainWindow::SetPlayState(QStringList audiolist)
 {
-	for(int i = 0; i < MAX_AUDIO_FILE; i++) {
+	for(int i = 0; i < m_audiobtngroup->buttons().size(); i++) {
 		m_audiobtngroup->buttons().at(i)->setCheckable(true);
 		if(m_audiolist.at(i) == ""){
 			m_audiobtngroup->buttons().at(i)->setEnabled(false);
@@ -709,3 +729,27 @@ bool MainWindow::IsReady()
 {
 	return m_ready;
 }
+
+void MainWindow::on_sliProcess_sliderPressed()
+{
+	seekBySlider();
+}
+
+void MainWindow::onTimeSliderHover(int pos, int value)
+{
+	QString timestr = QTime(0, 0, 0).addSecs(value).toString(QString::fromLatin1("HH:mm:ss"));
+	ui->sliProcess->SetTipStr(timestr);
+	QToolTip::showText(MapGlobal(ui->sliProcess) + QPoint(pos, 0), timestr);
+}
+
+QPoint MainWindow::MapGlobal(QWidget *widget)
+{
+	QWidget *curwidget = widget;
+	QPoint point = widget->pos();
+	while(curwidget->parent()){
+		point = ((QWidget *)curwidget->parent())->mapToParent(point);
+		curwidget = (QWidget *)curwidget->parent();
+	}
+	return point;
+}
+

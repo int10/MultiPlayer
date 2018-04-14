@@ -7,7 +7,6 @@
 #include "QtAV.h"
 
 //#define USE_QMEDIAPLAYER
-#define MAX_AUDIO_FILE		(4)
 class PlayerGroup : public QObject
 {
 	Q_OBJECT

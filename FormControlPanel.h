@@ -19,6 +19,7 @@ public:
 	void SetPlayPause(bool play);
 	void UpdateSlider(int max, int value, QString str);
 	void SyncVolume(int volume);
+	void SetProcessTipStr(QString tipstr);
 signals:
 	void SignalFb();
 	void SignalFf();
@@ -36,6 +37,10 @@ private slots:
 	void on_sliProcess_sliderMoved(int position);
 	void on_sliVolume_sliderPressed();
 	void on_sliVolume_valueChanged(int value);
+
+	void on_sliProcess_sliderPressed();
+	void onTimeSliderHover(int pos, int value);
+	QPoint MapGlobal(QWidget *widget);
 
 private:
 	Ui::FormControlPanel *ui;

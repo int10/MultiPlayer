@@ -15,8 +15,10 @@ include(src.pri)
 
 FORMS +=
 
-HEADERS +=
+HEADERS += \
 
-SOURCES +=
+
+SOURCES += \
+
 
 RC_FILE = Player.rc

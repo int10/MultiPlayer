@@ -64,7 +64,10 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="sliProcess">
+       <widget class="Slider" name="sliProcess">
+        <property name="toolTip">
+         <string extracomment="nnnnn"/>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -208,12 +211,12 @@
        <rect>
         <x>390</x>
         <y>20</y>
-        <width>131</width>
+        <width>180</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>00:00/00:00</string>
+       <string>00:00:00/00:00:00</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -223,6 +226,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Slider</class>
+   <extends>QSlider</extends>
+   <header location="global">Slider.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

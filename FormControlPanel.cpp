@@ -1,5 +1,8 @@
 #include "FormControlPanel.h"
 #include "ui_FormControlPanel.h"
+#include <QToolTip>
+#include <QDebug>
+#include <QTime>
 
 FormControlPanel::FormControlPanel(QWidget *parent) :
 	QWidget(parent),
@@ -12,6 +15,8 @@ FormControlPanel::FormControlPanel(QWidget *parent) :
 	QPalette p = this->palette();
 	p.setColor(QPalette::Window,QColor(64, 64, 64, 128));
 	this->setPalette(p);
+	//ui->sliProcess->setMouseTracking(true);
+	connect(ui->sliProcess, SIGNAL(onHover(int,int)), SLOT(onTimeSliderHover(int,int)));
 }
 
 FormControlPanel::~FormControlPanel()
@@ -108,4 +113,31 @@ void FormControlPanel::on_sliVolume_valueChanged(int value)
 void FormControlPanel::SyncVolume(int volume)
 {
 	ui->sliVolume->setValue(volume);
+}
+
+void FormControlPanel::onTimeSliderHover(int pos, int value)
+{
+	QString timestr = QTime(0, 0, 0).addSecs(value).toString(QString::fromLatin1("HH:mm:ss"));
+	ui->sliProcess->SetTipStr(timestr);
+}
+
+QPoint FormControlPanel::MapGlobal(QWidget *widget)
+{
+	QWidget *curwidget = widget;
+	QPoint point = widget->pos();
+	while(curwidget->parent()){
+		point = ((QWidget *)curwidget->parent())->mapToParent(point);
+		curwidget = (QWidget *)curwidget->parent();
+	}
+	return point;
+}
+
+void FormControlPanel::on_sliProcess_sliderPressed()
+{
+	emit SignalProcessMove(ui->sliProcess->value());
+}
+
+void FormControlPanel::SetProcessTipStr(QString tipstr)
+{
+	ui->sliProcess->SetTipStr(tipstr);
 }

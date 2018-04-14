@@ -55,6 +55,8 @@ private slots:
 	void on_sliVolume_valueChanged(int value);
 	void on_btnFb_clicked();
 	void on_btnFf_clicked();
+	void on_sliProcess_sliderPressed();
+	void onTimeSliderHover(int pos, int value);
 private:
 //	void Play(QString xmlfilename);
 	void Play();
@@ -67,6 +69,7 @@ private:
 	void InitVideoInterface();
 	void SetVolume();
 	bool SwitchAudio();
+	QPoint MapGlobal(QWidget *widget);
 protected:
 	void dragEnterEvent(QDragEnterEvent *event);
 	void dropEvent(QDropEvent *event);
