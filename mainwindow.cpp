@@ -4,7 +4,7 @@
 #include <QSlider>
 #include <QSettings>
 #include <QMessageBox>
-#define VERSION "2.0"
+#define VERSION "2.1"
 
 using namespace QtAV;
 MainWindow::MainWindow(QWidget *parent) :
@@ -560,6 +560,7 @@ void MainWindow::PlayFullScreen(int index)
 {
 	if(m_playergroup->AddVideoOutput(index, m_singlevideooutput)) {
 		ui->stackedWidget->setCurrentIndex(1);
+		m_ismaximized = this->isMaximized();
 		this->showFullScreen();
 		m_fullscreenindex = index;
 		m_controlpanel->hide();
@@ -570,7 +571,11 @@ void MainWindow::PlayFullScreen(int index)
 void MainWindow::ExitFullScreen(int index)
 {
 	if(-1 != m_fullscreenindex) {
-		this->showNormal();
+		if(m_ismaximized) {
+			this->showMaximized();
+		} else {
+			this->showNormal();
+		}
 		ui->stackedWidget->setCurrentIndex(0);
 		if(m_playergroup) m_playergroup->RemoveVideoOutput(index, m_singlevideooutput);
 		m_fullscreenindex = -1;

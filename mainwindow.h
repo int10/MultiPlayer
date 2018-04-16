@@ -92,6 +92,7 @@ private:
 	QMap<int, int> m_videoposmap;
 	QDateTime m_recordtime;
 	bool m_ready;
+	bool m_ismaximized;
 };
 
 #endif // MAINWINDOW_H
